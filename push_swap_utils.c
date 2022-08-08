@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 10:54:05 by bchabot           #+#    #+#             */
-/*   Updated: 2022/07/11 14:13:24 by bchabot          ###   ########.fr       */
+/*   Created: 2022/08/08 15:56:52 by bchabot           #+#    #+#             */
+/*   Updated: 2022/08/08 16:25:37 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "push_swap.h"
 
-t_list	*ft_lstnew(void *content)
+t_element *lstnew_ps(int content)
 {
-	t_list	*element;
+	t_element *element;
 
-	element = malloc(sizeof(t_list));
+	element = malloc(sizeof(t_element));
 	if (element)
 	{
 		element->content = content;
 		element->next = NULL;
 	}
 	return (element);
+}
+
+void	lstadd_back_ps(t_element **lst, t_element *new)
+{
+	t_element *tmp;
+
+	if (!lst || !*lst)
+	{
+		*lst = new;
+		return	;
+	}
+	tmp = *lst;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = new;
 }

@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:16:30 by bchabot           #+#    #+#             */
-/*   Updated: 2022/07/06 16:56:50 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/08 16:30:20 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@
 # include <stddef.h>
 # include "libft/libft.h"
 
-/*
-typedef struct s_list {
-	struct s_list	*prev;
-	void	*content;
-	struct s_list	*next;
-}	t_list;
-*/
+typedef struct s_element {
+	struct s_element	*prev;
+	int	content;
+	struct s_element	*next;
+}	t_element;
+
+t_element *lstnew_ps(int content);
+void	lstadd_back_ps(t_element **lst, t_element *new);
 
 #endif

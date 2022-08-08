@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:03:59 by bchabot           #+#    #+#             */
-/*   Updated: 2022/07/06 16:59:19 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/08 16:33:43 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,29 @@
 
 void ft_push_swap(int argc, char **argv)
 {
-	t_list **a;
-	t_list *b;
+	t_element *a;
+	t_element *b;
 	void *c;
 	int i;
+	int x;
 
 	i = 1;
 	(void)b;
-	a = malloc(sizeof(t_list));
-	while (i <= argc)
+	a = malloc(sizeof(t_element));
+	x = 0;
+	while (i < argc)
 	{
-		c = ft_lstnew(argv[i]);
-		ft_lstadd_back(a, c); 
+		x = ft_atoi(argv[i]);
+		c = lstnew_ps(x);
+		lstadd_back_ps(&a, c); 
 		i++;
 	}
-	i = 0;
-	while (a != NULL)
+	x = 0;
+	while (x < i)
 	{
-		ft_printf("%d", a[0]->content);
-		a[0] = a[0]->next;
-		i++;
+		ft_printf("%d\n", a->content);
+		a = a->next;
+		x++;
 	}
 }
 
