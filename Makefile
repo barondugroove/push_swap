@@ -6,12 +6,14 @@
 #    By: bchabot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 15:01:56 by bchabot           #+#    #+#              #
-#    Updated: 2022/08/08 16:01:00 by bchabot          ###   ########.fr        #
+#    Updated: 2022/08/09 13:39:35 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = push_swap.c \
-		push_swap_utils.c
+		push_swap_utils.c \
+		parse_data.c \
+		check_errors.c
 
 CC = gcc
 

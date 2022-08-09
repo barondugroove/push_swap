@@ -6,13 +6,13 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:03:59 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/08 16:33:43 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/09 12:48:11 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_push_swap(int argc, char **argv)
+void push_swap(int argc, char **argv)
 {
 	t_element *a;
 	t_element *b;
@@ -32,22 +32,25 @@ void ft_push_swap(int argc, char **argv)
 		i++;
 	}
 	x = 0;
+	/*
 	while (x < i)
 	{
 		ft_printf("%d\n", a->content);
 		a = a->next;
 		x++;
 	}
+	*/
 }
 
 int main(int argc, char **argv)
 {
+	parse_data(argc, argv);
 	if (argc == 1)
 	{
 		ft_printf("Missing arguments.\n");
 		return (1);
 	}
 	else
-		ft_push_swap(argc, argv);
+		push_swap(argc, argv);
 	return (0);
 }
