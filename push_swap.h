@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:16:30 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/09 13:48:58 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/10 15:06:41 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@
 typedef struct s_element {
 	struct s_element	*prev;
 	int	content;
+	int nb_max;
 	struct s_element	*next;
 }	t_element;
 
 t_element *lstnew_ps(int content);
 void	lstadd_back_ps(t_element **lst, t_element *new);
-void	parse_data(int argc, char **argv);
-void	check_params_char(char **tab);
+int		*parse_data(int argc, char **argv, t_element *a);
+void	check_params(char **tab, int i);
+void	search_duplicate(int *tab, int nb_max);
 
 #endif

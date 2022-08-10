@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:56:52 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/08 16:25:37 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/10 15:35:57 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_element *lstnew_ps(int content)
 	{
 		element->content = content;
 		element->next = NULL;
+		element->prev = NULL;
 	}
 	return (element);
 }
@@ -36,6 +37,10 @@ void	lstadd_back_ps(t_element **lst, t_element *new)
 	}
 	tmp = *lst;
 	while (tmp->next != NULL)
+	{
+		tmp->prev = tmp;
 		tmp = tmp->next;
+	}
 	tmp->next = new;
+	new->prev = tmp;
 }

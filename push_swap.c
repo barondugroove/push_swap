@@ -6,51 +6,50 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:03:59 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/09 12:48:11 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/10 15:36:47 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_swap(int argc, char **argv)
+void push_swap(int *tableau, t_element *a)
 {
-	t_element *a;
 	t_element *b;
-	void *c;
 	int i;
-	int x;
 
 	i = 1;
-	(void)b;
-	a = malloc(sizeof(t_element));
-	x = 0;
-	while (i < argc)
+	a->content = tableau[0];
+	search_duplicate(tableau, a->nb_max);
+	while (i <= a->nb_max)
 	{
-		x = ft_atoi(argv[i]);
-		c = lstnew_ps(x);
-		lstadd_back_ps(&a, c); 
+		b = lstnew_ps(tableau[i]);
+		lstadd_back_ps(&a, b); 
 		i++;
 	}
-	x = 0;
-	/*
-	while (x < i)
+	ft_printf("----------------------\n", a->content);
+	ft_printf("| STACK A || STACK B |\n", a->content);
+	ft_printf("----------------------\n", a->content);
+	while (a->next)
 	{
-		ft_printf("%d\n", a->content);
+		ft_printf("|    %d    ||         |\n", a->content);
 		a = a->next;
-		x++;
 	}
-	*/
+	ft_printf("----------------------\n", a->content);
 }
 
 int main(int argc, char **argv)
 {
-	parse_data(argc, argv);
+	int	*tableau;
+	t_element *a;
+
+	a = lstnew_ps(0);
+	tableau = parse_data(argc, argv, a);
 	if (argc == 1)
 	{
 		ft_printf("Missing arguments.\n");
 		return (1);
 	}
 	else
-		push_swap(argc, argv);
+		push_swap(tableau, a);;
 	return (0);
 }
