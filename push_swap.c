@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:03:59 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/10 15:36:47 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/16 18:35:12 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void push_swap(int *tableau, t_element *a)
 
 	i = 1;
 	a->content = tableau[0];
-	search_duplicate(tableau, a->nb_max);
+//	search_duplicate(tableau, a->nb_max);
 	while (i <= a->nb_max)
 	{
 		b = lstnew_ps(tableau[i]);

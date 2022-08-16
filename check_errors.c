@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:15:08 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/10 15:54:11 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/16 18:10:17 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void search_duplicate(int *tab, int nb_max)
 		{
 			if (tab[i] == tab[j])
 			{
-				ft_printf("Duplicate numbers found, please try again.\n");
+				write(2, "Error\n", 6);
 				exit (0);
 			}
 			j++;
@@ -35,23 +35,18 @@ void search_duplicate(int *tab, int nb_max)
 	}
 }
 
-void check_params(char **tab, int i)
+void check_params(char *argv)
 {
-	int j;
+	int i;
 
-	j = 0;
-	while (tab[i])
+	i = 0;
+	while (argv[i])
 	{
-		while (tab[i][j])
+		if ((argv[i] < 48 || argv[i] > 57) || (argv[i] == '-' && (argv[i + 1] >= 48 || argv[i + 1] <= 57)))
 		{
-			if ((tab[i][j] < 48 || tab[i][j] > 57) && tab[i][j] != '-')
-			{
-				ft_printf("Wrong arguments, please try again.\n");
-				exit (0);
-			}
-			j++;
+			write(2, "Error\n", 6);
+			exit (0);
 		}
 		i++;
-		j = 0;
 	}
 }
