@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:51:21 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/16 19:17:28 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/22 11:56:59 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,12 @@ int *parse_data(int argc, char **argv, t_element *a)
 	{	
 		if (is_multiple_args(argv[i]))
 		{
-			//check_params(argv[i]);
 			tab = ft_split(argv[i], ' ');
+			check_params(argv[i]);
 			y = 0;
 			while (tab[y])
 			{
 				tableau[x] = ft_atoi(tab[x]);
-				ft_printf("tableau[%d] = %d\n", x, tableau[x]);
-				ft_printf("tab[%d] = %s\n", x, tab[x]);
 				if (ft_strncmp(ft_itoa(tableau[x]), tab[x], ft_strlen(tab[x])) || argv[i][0] == '\0')
 					write(2, "Error\n", 6);
 				x++;

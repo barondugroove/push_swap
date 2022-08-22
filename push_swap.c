@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:03:59 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/16 18:35:12 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/22 11:57:38 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void push_swap(int *tableau, t_element *a)
 		lstadd_back_ps(&a, b); 
 		i++;
 	}
-	ft_printf("----------------------\n", a->content);
+/*	ft_printf("----------------------\n", a->content);
 	ft_printf("| STACK A || STACK B |\n", a->content);
 	ft_printf("----------------------\n", a->content);
 	while (a->next)
@@ -34,7 +34,7 @@ void push_swap(int *tableau, t_element *a)
 		ft_printf("|    %d    ||         |\n", a->content);
 		a = a->next;
 	}
-	ft_printf("----------------------\n", a->content);
+	ft_printf("----------------------\n", a->content);*/
 }
 
 int main(int argc, char **argv)

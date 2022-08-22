@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:15:08 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/16 18:10:17 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/22 11:54:55 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void check_params(char *argv)
 	i = 0;
 	while (argv[i])
 	{
-		if ((argv[i] < 48 || argv[i] > 57) || (argv[i] == '-' && (argv[i + 1] >= 48 || argv[i + 1] <= 57)))
+		if (((argv[i] < 48 || argv[i] > 57) || (argv[i] == '-' && (argv[i + 1] >= 48 && argv[i + 1] <= 57))) && argv[i] != ' ')
 		{
 			write(2, "Error\n", 6);
 			exit (0);
