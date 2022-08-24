@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:16:30 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/16 16:56:08 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/24 16:36:25 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ void	lstadd_back_ps(t_element **lst, t_element *new);
 int		*parse_data(int argc, char **argv, t_element *a);
 void	check_params(char *argv);
 void	search_duplicate(int *tab, int nb_max);
+char	*strjoin_ps(char *s1, char *s2);
+void	print_error();
 
 #endif

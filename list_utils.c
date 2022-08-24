@@ -5,28 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 21:36:26 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/24 16:43:06 by bchabot          ###   ########.fr       */
+/*   Created: 2022/08/08 15:56:52 by bchabot           #+#    #+#             */
+/*   Updated: 2022/08/10 15:35:57 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*strjoin_ps(char *s1, char *s2)
+t_element *lstnew_ps(int content)
 {
-	char	*tab;
-	int		longueur;
+	t_element *element;
 
-	if (!s1 || !s2)
-		return (NULL);
-	longueur = ft_strlen(s1) + ft_strlen(s2) + 2;
-	tab = malloc(sizeof(char) * longueur);
-	if (!tab)
-		return (NULL);
-	ft_strlcpy(tab, s1, longueur);
-	if (s1[0] != '\0')
-		ft_strlcat(tab, " ", longueur);
-	ft_strlcat(tab, s2, longueur);
-	free(s1);
-	return (tab);
+	element = malloc(sizeof(t_element));
+	if (element)
+	{
+		element->content = content;
+		element->next = NULL;
+		element->prev = NULL;
+	}
+	return (element);
+}
+
+void	lstadd_back_ps(t_element **lst, t_element *new)
+{
+	t_element *tmp;
+
+	if (!lst || !*lst)
+	{
+		*lst = new;
+		return	;
+	}
+	tmp = *lst;
+	while (tmp->next != NULL)
+	{
+		tmp->prev = tmp;
+		tmp = tmp->next;
+	}
+	tmp->next = new;
+	new->prev = tmp;
 }

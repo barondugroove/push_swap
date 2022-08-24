@@ -6,63 +6,43 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:51:21 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/22 11:56:59 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/24 16:43:46 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int is_multiple_args(char *argv)
-{
-	int i;
-
-	i = 0;
-	while (argv[i])
-	{
-		if (argv[i] == ' ' && ft_isdigit(argv[i + 1]))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 int *parse_data(int argc, char **argv, t_element *a)
 {
 	int i;
+	char *str;
 	char **tab;
-	int x;
-	int y;
 	int	*tableau;
 
 	i = 1;
-	x = 0;
 	tableau = malloc(sizeof(int) * 1000);
-	while (i < argc)
-	{	
-		if (is_multiple_args(argv[i]))
-		{
-			tab = ft_split(argv[i], ' ');
-			check_params(argv[i]);
-			y = 0;
-			while (tab[y])
-			{
-				tableau[x] = ft_atoi(tab[x]);
-				if (ft_strncmp(ft_itoa(tableau[x]), tab[x], ft_strlen(tab[x])) || argv[i][0] == '\0')
-					write(2, "Error\n", 6);
-				x++;
-				y++;
-			}
-		}
-		else
-		{
-				check_params(argv[i]);
-				tableau[x] = ft_atoi(argv[i]);
-				if (ft_strncmp(ft_itoa(tableau[x]), argv[i], ft_strlen(argv[i])) || argv[i][0] == '\0')
-					write(2, "Error\n", 6);
-				x++;
-		}
+	(void)argc;
+	str = ft_calloc(sizeof(char), 100);
+	while (argv[i])
+	{
+		if (argv[i][0] == '\0')
+			print_error();
+		check_params(argv[i]);
+		str = strjoin_ps(str, argv[i]);
 		i++;
 	}
-	a->nb_max = x;
+	tab = ft_split(str, ' ');
+	i = 0;
+	while (tab[i])
+	{
+		if (ft_strlen(tab[i]) > 10)
+			print_error();
+		tableau[i] = ft_atoi(tab[i]);
+		i++;
+	}
+	search_duplicate(tableau, i);
+	a->nb_max = i;
+	while (i)
+		free(tab[i--]);
 	return (tableau);
 }
