@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:15:08 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/24 16:34:45 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/29 14:55:05 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ void check_params(char *tab)
 	{
 		if ((tab[i] == '-' || tab[i] == '+') && (tab[i + 1] < 48 || tab[i + 1] > 57))
 			print_error();
-		else if ((tab[i] < 48 || tab[i] > 57) && (tab[i] != '-' && tab[i] != '+'))
+		else if ((tab[i] < 48 || tab[i] > 57) && (tab[i] != '-' && tab[i] != '+') && tab[i] != ' ')
 			print_error();
 		else if ((tab[i] >= 48 && tab[i] <= 57) && (tab[i + 1] == '-' || tab[i + 1] == '+'))
+			print_error();
+		else if (tab[i] == ' ' && (tab[i + 1] < 48 || tab[i + 1] > 57)) 
 			print_error();
 		else
 			i++;

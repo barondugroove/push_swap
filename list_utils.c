@@ -1,46 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:56:52 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/10 15:35:57 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/29 19:29:49 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_element *lstnew_ps(int content)
+t_stack *lstnew_ps()
 {
-	t_element *element;
+	t_stack	*stack;
 
-	element = malloc(sizeof(t_element));
-	if (element)
-	{
-		element->content = content;
-		element->next = NULL;
-		element->prev = NULL;
-	}
-	return (element);
+	stack = malloc(sizeof(t_stack));
+	if (!stack)
+		return NULL;	
+	stack->head = NULL;
+	stack->tail = NULL;
+	stack->nb_max = 0;
+	return (stack);
 }
 
-void	lstadd_back_ps(t_element **lst, t_element *new)
+t_element *lstnew_element(int content)
 {
-	t_element *tmp;
+	t_element	*node;
 
-	if (!lst || !*lst)
-	{
-		*lst = new;
-		return	;
-	}
-	tmp = *lst;
-	while (tmp->next != NULL)
-	{
-		tmp->prev = tmp;
-		tmp = tmp->next;
-	}
-	tmp->next = new;
-	new->prev = tmp;
+	node = malloc(sizeof(t_element));
+	if (!node)
+		return NULL;
+	node->next = NULL;
+	node->content = content;
+	node->index = 0;
+	return (node);
+}
+
+void	lstadd_front_ps(t_stack *stack, t_element *node)
+{
+	node->next = stack->head;
+	stack->head = node;
 }

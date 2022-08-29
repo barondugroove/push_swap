@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:36:26 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/24 16:43:06 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/29 18:27:50 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,32 @@ char	*strjoin_ps(char *s1, char *s2)
 	ft_strlcat(tab, s2, longueur);
 	free(s1);
 	return (tab);
+}
+
+int	atoi_ps(const char *nptr)
+{
+	long int	nbr;
+	int	neg;
+	int	i;
+
+	i = 0;
+	neg = 1;
+	nbr = 0;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-')
+	{
+		neg *= -1;
+		i++;
+	}
+	else if (nptr[i] == '+')
+		i++;
+	while (nptr[i] && (nptr[i] >= '0' && nptr[i] <= '9'))
+	{
+		nbr = nbr * 10 + (nptr[i] - 48);
+		i++;
+	}
+	if (nbr > INT_MAX || nbr < INT_MIN)
+		print_error();
+	return (nbr * neg);
 }

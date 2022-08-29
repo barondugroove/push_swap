@@ -6,13 +6,30 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:51:21 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/24 16:43:46 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/29 19:20:28 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int *parse_data(int argc, char **argv, t_element *a)
+int nb_max(char *str, t_stack	*a)
+{
+	int	i;
+	int	x;
+
+	i = 0;
+	x = 0;
+	while (str[i])
+	{
+		if ((str[i] >= 48 && str[i] <= 57) && (str[i + 1] < 48 || str[i + 1] > 57)) 
+			x++;
+		i++;
+	}
+	a->nb_max = x;
+	return (x);
+}
+
+int *parse_data(int argc, char **argv, t_stack *a)
 {
 	int i;
 	char *str;
@@ -20,9 +37,8 @@ int *parse_data(int argc, char **argv, t_element *a)
 	int	*tableau;
 
 	i = 1;
-	tableau = malloc(sizeof(int) * 1000);
 	(void)argc;
-	str = ft_calloc(sizeof(char), 100);
+	str = ft_calloc(sizeof(char), 1);
 	while (argv[i])
 	{
 		if (argv[i][0] == '\0')
@@ -31,18 +47,21 @@ int *parse_data(int argc, char **argv, t_element *a)
 		str = strjoin_ps(str, argv[i]);
 		i++;
 	}
+	tableau = malloc(sizeof(int) * nb_max(str, a));
 	tab = ft_split(str, ' ');
+	free(str);
 	i = 0;
 	while (tab[i])
 	{
 		if (ft_strlen(tab[i]) > 10)
 			print_error();
-		tableau[i] = ft_atoi(tab[i]);
+		tableau[i] = atoi_ps(tab[i]);
 		i++;
 	}
 	search_duplicate(tableau, i);
-	a->nb_max = i;
-	while (i)
-		free(tab[i--]);
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
 	return (tableau);
 }
