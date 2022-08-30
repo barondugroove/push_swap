@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:56:52 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/29 19:29:49 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/30 16:41:30 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_stack *lstnew_ps()
 	if (!stack)
 		return NULL;	
 	stack->head = NULL;
-	stack->tail = NULL;
 	stack->nb_max = 0;
 	return (stack);
 }
@@ -38,8 +37,17 @@ t_element *lstnew_element(int content)
 	return (node);
 }
 
-void	lstadd_front_ps(t_stack *stack, t_element *node)
+void	lstadd_back_ps(t_stack *stack, t_element *node)
 {
-	node->next = stack->head;
-	stack->head = node;
+	t_element	*tmp;
+
+	if (stack->head == NULL)
+	{
+		stack->head = node;
+		return ;
+	}
+	tmp = stack->head;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = node;
 }

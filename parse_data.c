@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:51:21 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/29 19:20:28 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/30 18:45:31 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,14 @@ int nb_max(char *str, t_stack	*a)
 	return (x);
 }
 
-int *parse_data(int argc, char **argv, t_stack *a)
+void	parse_data(char **argv, t_stack *stack)
 {
-	int i;
-	char *str;
-	char **tab;
-	int	*tableau;
+	t_element	*node;
+	int			i;
+	char		*str;
+	char		**tab;
 
 	i = 1;
-	(void)argc;
 	str = ft_calloc(sizeof(char), 1);
 	while (argv[i])
 	{
@@ -47,21 +46,18 @@ int *parse_data(int argc, char **argv, t_stack *a)
 		str = strjoin_ps(str, argv[i]);
 		i++;
 	}
-	tableau = malloc(sizeof(int) * nb_max(str, a));
 	tab = ft_split(str, ' ');
 	free(str);
 	i = 0;
 	while (tab[i])
 	{
-		if (ft_strlen(tab[i]) > 10)
-			print_error();
-		tableau[i] = atoi_ps(tab[i]);
+		node = lstnew_element(atoi_ps(tab[i]));
+		lstadd_back_ps(stack, node);
 		i++;
 	}
-	search_duplicate(tableau, i);
+	search_duplicate(stack);
 	i = 0;
 	while (tab[i])
 		free(tab[i++]);
 	free(tab);
-	return (tableau);
 }

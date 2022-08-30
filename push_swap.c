@@ -6,56 +6,61 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:03:59 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/29 19:33:15 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/30 18:47:01 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(int *tableau, t_stack *a)
+void	print_stack(t_stack *stack)
 {
-	t_element *node;
-	int i;
+	t_element *tmp;
 
-	i = 0;
-	search_duplicate(tableau, a->nb_max);
-	while (i < a->nb_max)
-	{
-		node = lstnew_element(tableau[i]);
-		lstadd_front_ps(a, node); 
-		i++;
-	}
-	a->tail = node;
+	tmp = stack->head;
 	ft_printf("----------------------\n");
 	ft_printf("| STACK A || STACK B |\n");
 	ft_printf("----------------------\n");
-	while (i--)
+	while (tmp)
 	{
-		ft_printf("|    %d    ||         |\n", node->content);
-		node = node->next;
+		ft_printf("|    %d    ||         |\n", tmp->content);
+		tmp = tmp->next;
 	}
 	ft_printf("----------------------\n");
+}
+
+void	push_swap(t_stack *a, t_stack *b)
+{
+
+	(void)b;
+	sa(a);
+	ra(a);
+	rra(a);
+	print_stack(a);
+/*
 	while (a->head)
 	{
 		node = a->head;
 		a->head = a->head->next;
 		free(node);
 		node = NULL;
+		i++;
 	}
+	free(a);
+	free(b);
+*/
 }
 
 int main(int argc, char **argv)
 {
-	int		*tableau;
 	t_stack	*a;
+	t_stack	*b;
 
 	a = lstnew_ps();
-	tableau = parse_data(argc, argv, a);
+	b = lstnew_ps();
+	parse_data(argv, a);
 	if (argc < 2)
 		print_error();
 	else
-		push_swap(tableau, a);
-	free(a);
-	free(tableau);
+		push_swap(a, b);
 	return (0);
 }

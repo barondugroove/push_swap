@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:15:08 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/29 14:55:05 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/30 18:45:10 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@ void	print_error()
 	write(2, "Error\n", 6);
 	exit (0);
 }
-void search_duplicate(int *tab, int nb_max)
+void search_duplicate(t_stack *stack)
 {
-	int i;
-	int j;
+	t_element *tmp;
+	t_element *tmp2;
 
-	i = 0;
-	j = 1;
-	while (i < nb_max)
+	tmp = stack->head;
+	tmp2 = stack->head->next;
+	while (tmp->next)
 	{
-		while (j < nb_max)
+		while (tmp2)
 		{
-			if (tab[i] == tab[j])
+			if (tmp2->content == tmp->content)
 				print_error();
-			j++;
+			tmp2 = tmp2->next;
 		}
-		i++;
-		j = 1 + i;
+		tmp = tmp->next;
+		tmp2 = tmp->next;
 	}
 }
 
