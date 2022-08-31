@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:36:26 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/29 18:27:50 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/31 15:43:48 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ char	*strjoin_ps(char *s1, char *s2)
 int	atoi_ps(const char *nptr)
 {
 	long int	nbr;
-	int	neg;
-	int	i;
+	int			neg;
+	int			i;
 
 	i = 0;
 	neg = 1;

@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:03:59 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/30 18:47:01 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/08/31 17:54:56 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_stack(t_stack *stack)
 {
-	t_element *tmp;
+	t_element	*tmp;
 
 	tmp = stack->head;
 	ft_printf("----------------------\n");
@@ -30,14 +30,15 @@ void	print_stack(t_stack *stack)
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-
 	(void)b;
-	sa(a);
-	ra(a);
+	print_stack(a);
 	rra(a);
 	print_stack(a);
-/*
-	while (a->head)
+	ra(a);
+	print_stack(a);
+	sa(a);
+	print_stack(a);
+	/*while (a->head)
 	{
 		node = a->head;
 		a->head = a->head->next;
@@ -46,11 +47,10 @@ void	push_swap(t_stack *a, t_stack *b)
 		i++;
 	}
 	free(a);
-	free(b);
-*/
+	free(b);*/
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;

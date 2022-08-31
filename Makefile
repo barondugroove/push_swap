@@ -6,7 +6,7 @@
 #    By: bchabot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 15:01:56 by bchabot           #+#    #+#              #
-#    Updated: 2022/08/30 16:45:54 by bchabot          ###   ########.fr        #
+#    Updated: 2022/08/31 17:52:11 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,10 @@ SRCS = push_swap.c \
 		list_utils.c \
 		parse_data.c \
 		check_errors.c \
-		instructions_a.c
+		instructions/swap.c \
+		instructions/rotate.c \
+		instructions/reverse.c \
+		instructions/push.c
 
 CC = gcc
 
@@ -30,17 +33,17 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 	
 $(LIBFT) :
-	@make -sC libft
-	echo "\033[92mLibft Compiled."
+	make -sC libft
+	@echo "\033[92mLibft Compiled."
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(OBJS) $(CFLAGS) $(LIBFT) -o $(NAME)
-	echo "\033[100m\033[1m\033[92mProgram Compiled."
+	$(CC) $(OBJS) $(CFLAGS) $(LIBFT) -o $(NAME)
+	@echo "\033[100m\033[1m\033[92mProgram Compiled."
 
 clean :
 	rm -f $(OBJS)
-	@make -sC libft fclean
-	echo "\033[91mObjects cleaned."
+	make -sC libft fclean
+	@echo "\033[91mObjects cleaned."
 
 fclean : clean
 	rm -rf $(NAME)
