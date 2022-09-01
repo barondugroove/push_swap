@@ -6,19 +6,20 @@
 #    By: bchabot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 15:01:56 by bchabot           #+#    #+#              #
-#    Updated: 2022/08/31 17:52:11 by bchabot          ###   ########.fr        #
+#    Updated: 2022/09/01 14:22:12 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = push_swap.c \
-		push_swap_utils.c \
-		list_utils.c \
-		parse_data.c \
-		check_errors.c \
-		instructions/swap.c \
-		instructions/rotate.c \
-		instructions/reverse.c \
-		instructions/push.c
+SRCS = srcs/push_swap.c \
+		srcs/push_swap_utils.c \
+		srcs/list_utils.c \
+		srcs/parse_data.c \
+		srcs/check_errors.c \
+		srcs/algo.c \
+		srcs/instructions/swap.c \
+		srcs/instructions/rotate.c \
+		srcs/instructions/reverse.c \
+		srcs/instructions/push.c
 
 CC = gcc
 

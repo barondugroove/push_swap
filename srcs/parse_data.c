@@ -6,28 +6,47 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:51:21 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/31 15:59:45 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/01 17:42:39 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	nb_max(char *str, t_stack	*a)
+int	nb_max(t_stack	*a)
 {
+	t_element	*tmp;
 	int	i;
-	int	x;
 
 	i = 0;
-	x = 0;
-	while (str[i])
+	tmp = a->head;
+	while (tmp)
 	{
-		if ((str[i] >= 48 && str[i] <= 57) && (str[i + 1] < 48 || str[i + 1] > 57))
-			x++;
 		i++;
+		tmp = tmp->next;
 	}
-	a->nb_max = x;
-	return (x);
+	return (i);
 }
+
+void get_index(t_stack	*stack)
+{
+	t_element	*tmp;
+	t_element	*tmp2;
+
+	tmp = stack->head;
+	tmp2 = stack->head->next;
+	while (tmp)
+	{
+		while (tmp2)
+		{
+			if (tmp->content > tmp2->content)
+				tmp->index += 1;
+			tmp2 = tmp2->next;
+		}
+		tmp = tmp->next;
+		tmp2 = stack->head;
+	}
+}
+		
 
 void	parse_data(char **argv, t_stack *stack)
 {
@@ -53,11 +72,10 @@ void	parse_data(char **argv, t_stack *stack)
 	{
 		node = lstnew_element(atoi_ps(tab[i]));
 		lstadd_back_ps(stack, node);
+		free(tab[i]);
 		i++;
 	}
-	search_duplicate(stack);
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
 	free(tab);
+	search_duplicate(stack);
+	get_index(stack);
 }

@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:16:30 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/31 17:25:24 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/01 17:53:43 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <limits.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct s_element {
 	struct s_element	*next;
@@ -38,9 +38,12 @@ void		parse_data(char **argv, t_stack *stack);
 void		check_params(char *argv);
 void		search_duplicate(t_stack *stack);
 char		*strjoin_ps(char *s1, char *s2);
-void		print_error(void);
+void		print_error();
 int			atoi_ps(const char *nptr);
-void		print_stack(t_stack *stack);
+int			max_digits(t_stack *stack);
+int			nb_max(t_stack *stack);
+void		print_stack(t_stack *stack, char name);
+void		sorting_big(t_stack *stack, t_stack	*stackb);
 
 // INSTRUCTIONS
 int			swap(t_stack *stack);
