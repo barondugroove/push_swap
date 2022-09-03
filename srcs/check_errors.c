@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:15:08 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/01 17:53:23 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/02 16:03:25 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@ void	print_error(void)
 {
 	write(2, "Error\n", 6);
 	exit (0);
+}
+
+void	has_number(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 48 && str[i] <= 57)
+			return ;
+		i++;
+	}
+	print_error();
 }
 
 void	search_duplicate(t_stack *stack)

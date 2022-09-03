@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:36:26 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/31 15:43:48 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/02 15:49:50 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	atoi_ps(const char *nptr)
 		nbr = nbr * 10 + (nptr[i] - 48);
 		i++;
 	}
-	if (nbr > INT_MAX || nbr < INT_MIN)
+	if ((nbr * neg) > INT_MAX || (nbr * neg) < INT_MIN)
 		print_error();
 	return (nbr * neg);
 }

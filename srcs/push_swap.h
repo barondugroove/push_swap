@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:16:30 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/01 17:53:43 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/03 20:39:17 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,24 @@ typedef struct s_element {
 
 typedef struct s_stack {
 	struct s_element	*head;
+	struct s_sort		*insts;
 	int					nb_max;
 }	t_stack;
 
+typedef	struct s_sort {
+	char	*instruction;
+	struct s_sort	*head;
+	struct s_sort	*next;
+}	t_sort;
+
 t_stack		*lstnew_ps(void);
 t_element	*lstnew_element(int content);
+t_sort		*lstnew_instruction(char *str);
 void		lstadd_back_ps(t_stack *stack, t_element *node);
 int			lstsize_ps(t_stack *stack);
 void		parse_data(char **argv, t_stack *stack);
 void		check_params(char *argv);
+void		has_number(char *argv);
 void		search_duplicate(t_stack *stack);
 char		*strjoin_ps(char *s1, char *s2);
 void		print_error();

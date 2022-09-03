@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:56:52 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/01 16:42:59 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/03 18:07:24 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ t_element	*lstnew_element(int content)
 	node->content = content;
 	node->index = 0;
 	return (node);
+}
+
+t_sort	*lstnew_instruction(char *str)
+{
+	t_sort	*insts;
+
+	insts = malloc(sizeof(t_element));
+	if (!insts)
+		return (NULL);
+	insts->next = NULL;
+	insts->instruction = str;
+	insts->head = NULL;
+	return (insts);
 }
 
 void	lstadd_back_ps(t_stack *stack, t_element *node)

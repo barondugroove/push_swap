@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:51:21 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/01 17:42:39 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/02 16:06:48 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	parse_data(char **argv, t_stack *stack)
 		str = strjoin_ps(str, argv[i]);
 		i++;
 	}
+	has_number(str);
 	tab = ft_split(str, ' ');
 	free(str);
 	i = 0;

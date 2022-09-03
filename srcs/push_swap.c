@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:03:59 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/01 17:54:47 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/03 20:57:51 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,27 @@ void	print_stack(t_stack *stack, char name)
 	ft_printf("------------\n");
 }
 
+void	ft_free(t_stack *stack)
+{
+	t_element	*tmp;
+
+	while (stack->head)
+	{
+		tmp = stack->head;
+		stack->head = stack->head->next;
+		free(tmp);
+		tmp = NULL;
+	}
+	free(stack);
+}
+
 void	push_swap(t_stack *a, t_stack *b)
 {
-	print_stack(a, 'A');	
-	print_stack(b, 'B');	
+//	print_stack(a, 'A');	
+//	print_stack(b, 'B');	
 	sorting_big(a, b);
-	print_stack(a, 'A');	
-	print_stack(b, 'B');	
-	
-	/*while (a->head)
-	{
-		node = a->head;
-		a->head = a->head->next;
-		free(node);
-		node = NULL;
-		i++;
-	}
-	free(a);
-	free(b);*/
+//	print_stack(a, 'A');	
+//	print_stack(b, 'B');	
 }
 
 int	main(int argc, char **argv)
@@ -60,5 +63,7 @@ int	main(int argc, char **argv)
 		print_error();
 	else
 		push_swap(a, b);
+	ft_free(a);
+	ft_free(b);
 	return (0);
 }

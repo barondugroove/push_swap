@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:17:37 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/31 17:33:40 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/02 15:31:29 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	rotate(t_stack *stack)
     t_element   *tmp;
     t_element   *tmp2;
 
-    if (!stack->head)
+    if (lstsize_ps(stack) < 2)
         return (-1);
     tmp = stack->head;
     tmp2 = stack->head;

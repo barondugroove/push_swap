@@ -6,35 +6,35 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:01:52 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/01 17:34:12 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/03 20:57:36 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	max_digits(t_stack	*stack)
+/*void	add_instruction(t_stack *t_sort *insts, char *str)
+{
+	insts = lstnew_instruction(str);
+	if (!!insts->head)
+		insts->head = insts;
+	lstadd_back_ps((t_stack *)insts, insts);
+	while (insts->next)
+		ft_printf("%s\n", insts->instruction);
+}
+*/	
+
+int	is_sorted(t_stack *stack)
 {
 	t_element	*tmp;
-	int	buf;
-	int x;
-	
+
 	tmp = stack->head;
-	buf = 0;
-	x = 1;
 	while (tmp->next)
 	{
-		if (tmp->content > buf)
-			buf = tmp->content;
+		if (tmp->index >= tmp->next->index)
+			return (1);
 		tmp = tmp->next;
 	}
-	if (tmp->content > buf)
-		buf = tmp->content;
-	while (buf / 10 != 0)
-	{
-		buf /= 10;
-		x++;
-	}
-	return (x);
+	return (0);
 }
 
 void	sorting_big(t_stack	*stack, t_stack	*stackb)
@@ -48,6 +48,8 @@ void	sorting_big(t_stack	*stack, t_stack	*stackb)
 	{
 		i = 0;
 		stack_len = nb_max(stack);
+		if (!is_sorted(stack))
+			return ;
 		while (i < stack_len)
 		{
 			if ((stack->head->index >> x) & 1)
@@ -61,4 +63,3 @@ void	sorting_big(t_stack	*stack, t_stack	*stackb)
 			pa(stackb, stack);
 	}
 }
-			
