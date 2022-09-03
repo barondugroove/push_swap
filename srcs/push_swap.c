@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:03:59 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/03 20:57:51 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/03 22:22:35 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,18 @@ int	main(int argc, char **argv)
 
 	a = lstnew_ps();
 	b = lstnew_ps();
-	parse_data(argv, a);
-	if (argc < 2)
+	if (parse_data(argv, a))
+	{
+		ft_free(a);
+		ft_free(b);
 		print_error();
+	}
+	if (argc < 2)
+	{	
+		free(a);
+		free(b);
+		print_error();
+	}
 	else
 		push_swap(a, b);
 	ft_free(a);

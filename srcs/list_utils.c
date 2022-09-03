@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:56:52 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/03 18:07:24 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/03 22:27:25 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	lstadd_back_ps(t_stack *stack, t_element *node)
 int	lstsize_ps(t_stack *stack)
 {
 	t_element	*tmp;
-	int	i;
+	int			i;
 
 	i = 0;
 	tmp = stack->head;

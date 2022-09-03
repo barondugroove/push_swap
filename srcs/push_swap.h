@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:16:30 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/03 20:39:17 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/03 22:27:00 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_stack {
 	int					nb_max;
 }	t_stack;
 
-typedef	struct s_sort {
-	char	*instruction;
+typedef struct s_sort {
+	char			*instruction;
 	struct s_sort	*head;
 	struct s_sort	*next;
 }	t_sort;
@@ -42,17 +42,18 @@ t_element	*lstnew_element(int content);
 t_sort		*lstnew_instruction(char *str);
 void		lstadd_back_ps(t_stack *stack, t_element *node);
 int			lstsize_ps(t_stack *stack);
-void		parse_data(char **argv, t_stack *stack);
-void		check_params(char *argv);
+int			parse_data(char **argv, t_stack *stack);
+int			check_params(char *argv);
 void		has_number(char *argv);
-void		search_duplicate(t_stack *stack);
+int			search_duplicate(t_stack *stack);
 char		*strjoin_ps(char *s1, char *s2);
-void		print_error();
+void		print_error(void);
 int			atoi_ps(const char *nptr);
 int			max_digits(t_stack *stack);
 int			nb_max(t_stack *stack);
 void		print_stack(t_stack *stack, char name);
 void		sorting_big(t_stack *stack, t_stack	*stackb);
+void		ft_free(t_stack *stack);
 
 // INSTRUCTIONS
 int			swap(t_stack *stack);

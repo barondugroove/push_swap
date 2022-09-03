@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:15:08 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/02 16:03:25 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/03 22:06:29 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ void	has_number(char *str)
 			return ;
 		i++;
 	}
+	free(str);
 	print_error();
 }
 
-void	search_duplicate(t_stack *stack)
+int	search_duplicate(t_stack *stack)
 {
 	t_element	*tmp;
 	t_element	*tmp2;
@@ -44,30 +45,34 @@ void	search_duplicate(t_stack *stack)
 		while (tmp2)
 		{
 			if (tmp2->content == tmp->content)
-				print_error();
+				return (1);
 			tmp2 = tmp2->next;
 		}
 		tmp = tmp->next;
 		tmp2 = tmp->next;
 	}
+	return (0);
 }
 
-void	check_params(char *tab)
+int	check_params(char *tab)
 {
 	int	i;
 
 	i = 0;
+	if (tab[i] == '\0')
+		return (1);
 	while (tab[i])
 	{
 		if (tab[i] == ' ' && tab[i + 1] == ' ')
 			i++;
 		else if ((tab[i] == '-' || tab[i] == '+') && (tab[i + 1] < 48 || tab[i + 1] > 57))
-			print_error();
+			return (1);
 		else if ((tab[i] < 48 || tab[i] > 57) && (tab[i] != '-' && tab[i] != '+') && tab[i] != ' ')
-			print_error();
+			return (1);
 		else if ((tab[i] >= 48 && tab[i] <= 57) && (tab[i + 1] == '-' || tab[i + 1] == '+'))
-			print_error();
+			return (1);
 		else
 			i++;
 	}
+	return (0);
 }

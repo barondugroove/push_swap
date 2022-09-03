@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:51:21 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/02 16:06:48 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/03 22:26:18 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	nb_max(t_stack	*a)
 {
 	t_element	*tmp;
-	int	i;
+	int			i;
 
 	i = 0;
 	tmp = a->head;
@@ -27,7 +27,7 @@ int	nb_max(t_stack	*a)
 	return (i);
 }
 
-void get_index(t_stack	*stack)
+void	get_index(t_stack	*stack)
 {
 	t_element	*tmp;
 	t_element	*tmp2;
@@ -46,9 +46,8 @@ void get_index(t_stack	*stack)
 		tmp2 = stack->head;
 	}
 }
-		
 
-void	parse_data(char **argv, t_stack *stack)
+int	parse_data(char **argv, t_stack *stack)
 {
 	t_element	*node;
 	int			i;
@@ -59,9 +58,11 @@ void	parse_data(char **argv, t_stack *stack)
 	str = ft_calloc(sizeof(char), 1);
 	while (argv[i])
 	{
-		if (argv[i][0] == '\0')
-			print_error();
-		check_params(argv[i]);
+		if (check_params(argv[i]))
+		{
+			free(str);
+			return (1);
+		}
 		str = strjoin_ps(str, argv[i]);
 		i++;
 	}
@@ -77,6 +78,11 @@ void	parse_data(char **argv, t_stack *stack)
 		i++;
 	}
 	free(tab);
-	search_duplicate(stack);
+	if (search_duplicate(stack))
+	{
+		ft_free(stack);
+		print_error();
+	}
 	get_index(stack);
+	return (0);
 }
