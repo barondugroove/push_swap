@@ -6,11 +6,37 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:36:26 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/03 22:14:41 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/05 17:58:03 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_stack(t_stack *stack)
+{
+	t_element	*tmp;
+
+	while (stack->head)
+	{
+		tmp = stack->head;
+		stack->head = stack->head->next;
+		free(tmp);
+		tmp = NULL;
+	}
+	free(stack);
+}
+
+void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i++]);
+	}
+	free(tab);
+}
 
 char	*strjoin_ps(char *s1, char *s2)
 {
@@ -31,7 +57,7 @@ char	*strjoin_ps(char *s1, char *s2)
 	return (tab);
 }
 
-int	atoi_ps(const char *nptr)
+long	int	atoi_ps(const char *nptr)
 {
 	long int	nbr;
 	int			neg;
@@ -54,7 +80,5 @@ int	atoi_ps(const char *nptr)
 		nbr = nbr * 10 + (nptr[i] - 48);
 		i++;
 	}
-	if ((nbr * neg) > INT_MAX || (nbr * neg) < INT_MIN)
-		print_error();
 	return (nbr * neg);
 }

@@ -6,22 +6,11 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:01:52 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/03 20:57:36 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/05 16:20:05 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*void	add_instruction(t_stack *t_sort *insts, char *str)
-{
-	insts = lstnew_instruction(str);
-	if (!!insts->head)
-		insts->head = insts;
-	lstadd_back_ps((t_stack *)insts, insts);
-	while (insts->next)
-		ft_printf("%s\n", insts->instruction);
-}
-*/	
 
 int	is_sorted(t_stack *stack)
 {

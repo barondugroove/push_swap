@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 17:34:51 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/01 15:39:33 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/05 16:33:13 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ int	push(t_stack *stack_snd, t_stack *stack_rcv)
 {
 	t_element	*tmp;
 
-	if (!stack_snd->head)
-		return (-1);
 	tmp = stack_snd->head;
-	if (!stack_rcv->head)
+	if (stack_rcv == NULL)
 	{
-		stack_snd->head = stack_snd->head->next;
-		tmp->next = NULL;
 		stack_rcv->head = tmp;
+		tmp->next = NULL;
+		stack_snd->head = stack_snd->head->next;
 	}
 	else
 	{

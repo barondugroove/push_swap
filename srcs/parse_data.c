@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:51:21 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/03 22:26:18 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/05 18:20:20 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,30 @@ int	parse_data(char **argv, t_stack *stack)
 	while (argv[i])
 	{
 		if (check_params(argv[i]))
-		{
-			free(str);
 			return (1);
-		}
 		str = strjoin_ps(str, argv[i]);
 		i++;
 	}
-	has_number(str);
+	if (has_number(str))
+	{
+		free_stack(stack);
+		free(str);
+		print_error();
+	}
 	tab = ft_split(str, ' ');
 	free(str);
 	i = 0;
+	is_int(tab);
 	while (tab[i])
 	{
 		node = lstnew_element(atoi_ps(tab[i]));
 		lstadd_back_ps(stack, node);
-		free(tab[i]);
 		i++;
 	}
-	free(tab);
+	free_tab(tab);
 	if (search_duplicate(stack))
 	{
-		ft_free(stack);
+		free_stack(stack);
 		print_error();
 	}
 	get_index(stack);

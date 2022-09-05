@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:03:59 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/03 22:22:35 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/05 18:33:00 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,9 @@ void	ft_free(t_stack *stack)
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-//	print_stack(a, 'A');	
-//	print_stack(b, 'B');	
+	print_stack(a, 'A');
 	sorting_big(a, b);
-//	print_stack(a, 'A');	
-//	print_stack(b, 'B');	
+	print_stack(a, 'A');
 }
 
 int	main(int argc, char **argv)
@@ -56,23 +54,19 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
+	if (argc < 2)
+		print_error();
 	a = lstnew_ps();
-	b = lstnew_ps();
 	if (parse_data(argv, a))
 	{
-		ft_free(a);
-		ft_free(b);
+		free_stack(a);
 		print_error();
 	}
-	if (argc < 2)
-	{	
-		free(a);
-		free(b);
-		print_error();
-	}
-	else
-		push_swap(a, b);
-	ft_free(a);
-	ft_free(b);
+	b = lstnew_ps();
+	push_swap(a, b);
+	if (a->head)
+		free_stack(a);
+	if (b->head)
+		free_stack(b);
 	return (0);
 }
