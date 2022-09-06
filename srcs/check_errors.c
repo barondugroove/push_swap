@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:15:08 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/05 18:30:10 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/06 16:53:26 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	has_number(char *str)
 			return (0);
 		i++;
 	}
-	free(str);
 	return (1);
 }
 
@@ -78,14 +77,12 @@ int	check_params(char *tab)
 	int	i;
 
 	i = 0;
-	if (tab[i] == '\0')
+	if (tab[i] == '\0' || !tab)
 		return (1);
 	while (tab[i])
 	{
 		if (tab[i] == ' ' && tab[i + 1] == ' ')
 			i++;
-		else if (tab[i] == ' ' && tab[i + 1] == '\0')
-			return (1);
 		else if ((tab[i] == '-' || tab[i] == '+') && (tab[i + 1] < 48 || tab[i + 1] > 57))
 			return (1);
 		else if ((tab[i] < 48 || tab[i] > 57) && (tab[i] != '-' && tab[i] != '+') && tab[i] != ' ')

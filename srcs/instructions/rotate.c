@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:17:37 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/02 15:31:29 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/06 15:10:49 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 int	rotate(t_stack *stack)
 {
-    t_element   *tmp;
-    t_element   *tmp2;
+	t_element	*tmp;
+	t_element	*tmp2;
 
-    if (lstsize_ps(stack) < 2)
-        return (-1);
-    tmp = stack->head;
-    tmp2 = stack->head;
-    stack->head = stack->head->next;
-    while (tmp->next)
-        tmp = tmp->next;
-    tmp->next = tmp2;
-    tmp2->next = NULL;
+	if (lstsize_ps(stack) < 2)
+		return (-1);
+	tmp = stack->head;
+	tmp2 = stack->head;
+	stack->head = stack->head->next;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = tmp2;
+	tmp2->next = NULL;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:16:30 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/05 18:01:23 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/06 18:31:50 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,25 @@ int					max_digits(t_stack *stack);
 int					nb_max(t_stack *stack);
 void				print_stack(t_stack *stack, char name);
 void				sorting_big(t_stack *stack, t_stack	*stackb);
+void				sorting_three(t_stack *stack);
+void				sorting_five(t_stack *stack, t_stack *stackb);
 void				free_stack(t_stack *stack);
 void				free_tab(char **tab);
 
 // INSTRUCTIONS
-int			swap(t_stack *stack);
-void		sa(t_stack *stack);
-void		sb(t_stack *stack);
-void		ss(t_stack *stack, t_stack *stackb);
-int			rotate(t_stack *stack);
-void		ra(t_stack *stack);
-void		rb(t_stack *stack);
-void		rr(t_stack *stack, t_stack *stackb);
-int			reverse(t_stack	*stack);
-void		rra(t_stack *stack);
-void		rrb(t_stack *stack);
-void		rrr(t_stack *stack, t_stack	*stackb);
-void		pa(t_stack *stack, t_stack *stackb);
-void		pb(t_stack *stack, t_stack *stackb);
+int					swap(t_stack *stack);
+void				sa(t_stack *stack);
+void				sb(t_stack *stack);
+void				ss(t_stack *stack, t_stack *stackb);
+int					rotate(t_stack *stack);
+void				ra(t_stack *stack);
+void				rb(t_stack *stack);
+void				rr(t_stack *stack, t_stack *stackb);
+int					reverse(t_stack	*stack);
+void				rra(t_stack *stack);
+void				rrb(t_stack *stack);
+void				rrr(t_stack *stack, t_stack	*stackb);
+void				pa(t_stack *stack, t_stack *stackb);
+void				pb(t_stack *stack, t_stack *stackb);
 
 #endif

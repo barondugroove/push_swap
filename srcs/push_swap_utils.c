@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:36:26 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/05 17:58:03 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/06 17:27:06 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	free_stack(t_stack *stack)
 		tmp = stack->head;
 		stack->head = stack->head->next;
 		free(tmp);
-		tmp = NULL;
+		//tmp = NULL;
 	}
 	free(stack);
 }
@@ -33,7 +33,8 @@ void	free_tab(char **tab)
 	i = 0;
 	while (tab[i])
 	{
-		free(tab[i++]);
+		free(tab[i]);
+		i++;
 	}
 	free(tab);
 }

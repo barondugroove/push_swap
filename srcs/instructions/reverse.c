@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 17:18:45 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/31 17:32:25 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/06 15:11:19 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int	reverse(t_stack *stack)
 void	rra(t_stack	*stack)
 {
 	if (reverse(stack) == -1)
-		return;
+		return ;
 	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack	*stack)
 {
 	if (reverse(stack) == -1)
-		return;
+		return ;
 	write(1, "rrb\n", 4);
 }
 

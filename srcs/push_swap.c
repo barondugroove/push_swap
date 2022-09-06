@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:03:59 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/05 18:33:00 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/06 18:51:09 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,25 @@ void	ft_free(t_stack *stack)
 	free(stack);
 }
 
-void	push_swap(t_stack *a, t_stack *b)
+void	push_swap(t_stack *a)
 {
-	print_stack(a, 'A');
-	sorting_big(a, b);
-	print_stack(a, 'A');
+	t_stack	*b;
+
+	b = lstnew_ps();
+//	print_stack(a, 'A');
+	if (a->nb_max == 3)
+		sorting_three(a);
+	else if (a->nb_max == 5)
+		sorting_five(a, b);
+	else
+		sorting_big(a, b);
+//	print_stack(a, 'A');
+	free_stack(b);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	t_stack	*b;
 
 	if (argc < 2)
 		print_error();
@@ -62,11 +70,10 @@ int	main(int argc, char **argv)
 		free_stack(a);
 		print_error();
 	}
-	b = lstnew_ps();
-	push_swap(a, b);
-	if (a->head)
-		free_stack(a);
-	if (b->head)
-		free_stack(b);
+//	b = lstnew_ps();
+//	b = NULL;
+	push_swap(a);
+	free_stack(a);
+//	free_stack(b);
 	return (0);
 }
