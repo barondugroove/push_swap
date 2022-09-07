@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:51:21 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/06 17:18:15 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/07 13:10:24 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	nb_max(t_stack	*a)
 	return (i);
 }
 
-void	get_index(t_stack	*stack)
+void	get_index(t_stack *stack)
 {
 	t_element	*tmp;
 	t_element	*tmp2;
@@ -47,50 +47,38 @@ void	get_index(t_stack	*stack)
 	}
 }
 
+void	reset_index(t_stack *stack)
+{
+	t_element	*tmp;
+
+	tmp = stack->head;
+	while (tmp)
+	{
+		tmp->index = 0;
+		tmp = tmp->next;
+	}
+}
+
 int	parse_data(char **argv, t_stack *stack)
 {
-	t_element	*node;
-	int			i;
 	char		*str;
 	char		**tab;
 
-	i = 1;
-	str = ft_calloc(sizeof(char), 1);
-	while (argv[i])
-	{
-		if (has_number(argv[i]))
-		{
-			free(str);
-			return (1);
-		}
-		str = strjoin_ps(str, argv[i]);
-		i++;
-	}
-	if (has_number(str) || check_params(str))
+	str = get_args(argv);
+	if (!str)
+		return (1);
+	if (!has_number(str) || check_params(str))
 	{
 		free(str);
 		return (1);
 	}
 	tab = ft_split(str, ' ');
 	free(str);
-	i = 0;
 	if (is_int(tab))
-	{
-		free_tab(tab);
 		return (1);
-	}
-	while (tab[i])
-	{
-		node = lstnew_element(atoi_ps(tab[i]));
-		lstadd_back_ps(stack, node);
-		i++;
-	}
-	free_tab(tab);
+	fill_stack(stack, tab);
 	if (search_duplicate(stack))
-	{
-		free_stack(stack);
-		print_error();
-	}
+		return (1);
 	get_index(stack);
 	stack->nb_max = nb_max(stack);
 	return (0);

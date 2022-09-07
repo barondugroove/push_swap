@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:01:52 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/06 18:52:16 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/07 12:32:59 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	sorting_three(t_stack *stack)
 	t_element	*tmp;
 
 	tmp = stack->head;
-	print_stack(stack, 'A');
 	while (!is_sorted(stack))
 	{
 		if (tmp->index == 1 && tmp->next->index == 0)
@@ -55,19 +54,39 @@ void	sorting_three(t_stack *stack)
 
 void	sorting_five(t_stack *stack, t_stack *stackb)
 {
-	while (lstsize_ps(stack) > 3) 
+	if (is_sorted(stack))
+		return ;
+	while (lstsize_ps(stack) > 3)
 	{
-		if (stack->head->index == 0 || stack->head->index == 4)
+		if (stack->head->index == 0 || stack->head->index == 1)
 			pb(stack, stackb);
 		else
-			ra(stack);	
+			ra(stack);
 	}
+	reset_index(stack);
+	get_index(stack);
 	sorting_three(stack);
-	print_stack(stack, 'A');
-	rrb(stackb);
 	pa(stackb, stack);
 	pa(stackb, stack);
-	ra(stack);
+	if (stack->head->index > stack->head->next->index)
+		sa(stack);
+}
+
+void	sorting_four(t_stack *stack, t_stack *stackb)
+{
+	if (is_sorted(stack))
+		return ;
+	while (lstsize_ps(stack) > 3)
+	{
+		if (stack->head->index == 0)
+			pb(stack, stackb);
+		else
+			ra(stack);
+	}
+	reset_index(stack);
+	get_index(stack);
+	sorting_three(stack);
+	pa(stackb, stack);
 }
 
 void	sorting_big(t_stack	*stack, t_stack	*stackb)

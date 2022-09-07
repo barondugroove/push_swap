@@ -6,27 +6,11 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:03:59 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/06 18:51:09 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/07 12:31:19 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(t_stack *stack, char name)
-{
-	t_element	*tmp;
-
-	tmp = stack->head;
-	ft_printf("------------\n");
-	ft_printf("| STACK  %c |\n", name);
-	ft_printf("------------\n");
-	while (tmp)
-	{
-		ft_printf("|    %d     |\n", tmp->content);
-		tmp = tmp->next;
-	}
-	ft_printf("------------\n");
-}
 
 void	ft_free(t_stack *stack)
 {
@@ -47,14 +31,14 @@ void	push_swap(t_stack *a)
 	t_stack	*b;
 
 	b = lstnew_ps();
-//	print_stack(a, 'A');
-	if (a->nb_max == 3)
+	if (a->nb_max == 3 || a->nb_max == 2)
 		sorting_three(a);
+	else if (a->nb_max == 4)
+		sorting_four(a, b);
 	else if (a->nb_max == 5)
 		sorting_five(a, b);
 	else
 		sorting_big(a, b);
-//	print_stack(a, 'A');
 	free_stack(b);
 }
 
@@ -70,10 +54,7 @@ int	main(int argc, char **argv)
 		free_stack(a);
 		print_error();
 	}
-//	b = lstnew_ps();
-//	b = NULL;
 	push_swap(a);
 	free_stack(a);
-//	free_stack(b);
 	return (0);
 }

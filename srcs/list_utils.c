@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:56:52 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/05 15:43:48 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/07 13:12:11 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,19 @@ int	lstsize_ps(t_stack *stack)
 		i++;
 	}
 	return (i);
+}
+
+void	fill_stack(t_stack *stack, char **tab)
+{
+	t_element	*node;
+	int			i;
+
+	i = 0;
+	while (tab[i])
+	{
+		node = lstnew_element(atoi_ps(tab[i]));
+		lstadd_back_ps(stack, node);
+		i++;
+	}
+	free_tab(tab);
 }

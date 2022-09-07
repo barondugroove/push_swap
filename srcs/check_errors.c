@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:15:08 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/06 16:53:26 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/07 13:03:24 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,20 @@ void	print_error(void)
 
 int	is_int(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab[i])
 	{
 		if (atoi_ps(tab[i]) > INT_MAX || atoi_ps(tab[i]) < INT_MIN)
-		{
+		{	
 			free_tab(tab);
-			print_error();
 			return (1);
 		}
 		i++;
 	}
 	return (0);
 }
-
 
 int	has_number(char *str)
 {
@@ -45,10 +43,10 @@ int	has_number(char *str)
 	while (str[i])
 	{
 		if (str[i] >= 48 && str[i] <= 57)
-			return (0);
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 int	search_duplicate(t_stack *stack)
@@ -83,11 +81,14 @@ int	check_params(char *tab)
 	{
 		if (tab[i] == ' ' && tab[i + 1] == ' ')
 			i++;
-		else if ((tab[i] == '-' || tab[i] == '+') && (tab[i + 1] < 48 || tab[i + 1] > 57))
+		else if ((tab[i] == '-' || tab[i] == '+')
+			&& (tab[i + 1] < 48 || tab[i + 1] > 57))
 			return (1);
-		else if ((tab[i] < 48 || tab[i] > 57) && (tab[i] != '-' && tab[i] != '+') && tab[i] != ' ')
+		else if ((tab[i] < 48 || tab[i] > 57)
+			&& (tab[i] != '-' && tab[i] != '+') && tab[i] != ' ')
 			return (1);
-		else if ((tab[i] >= 48 && tab[i] <= 57) && (tab[i + 1] == '-' || tab[i + 1] == '+'))
+		else if ((tab[i] >= 48 && tab[i] <= 57)
+			&& (tab[i + 1] == '-' || tab[i + 1] == '+'))
 			return (1);
 		else
 			i++;

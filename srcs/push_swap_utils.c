@@ -6,11 +6,31 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:36:26 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/06 17:27:06 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/07 13:09:48 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+char	*get_args(char **argv)
+{
+	char		*str;
+	int			i;
+
+	i = 1;
+	str = malloc(sizeof(char) * 1);
+	while (argv[i])
+	{
+		if (!has_number(argv[i]))
+		{
+			free(str);
+			return (NULL);
+		}
+		str = strjoin_ps(str, argv[i]);
+		i++;
+	}
+	return (str);
+}
 
 void	free_stack(t_stack *stack)
 {
@@ -21,7 +41,7 @@ void	free_stack(t_stack *stack)
 		tmp = stack->head;
 		stack->head = stack->head->next;
 		free(tmp);
-		//tmp = NULL;
+		tmp = NULL;
 	}
 	free(stack);
 }
