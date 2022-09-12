@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:36:26 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/07 13:09:48 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/07 16:14:07 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_args(char **argv)
 	int			i;
 
 	i = 1;
-	str = malloc(sizeof(char) * 1);
+	str = ft_calloc(sizeof(char), 1);
 	while (argv[i])
 	{
 		if (!has_number(argv[i]))

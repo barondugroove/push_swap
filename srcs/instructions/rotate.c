@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:17:37 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/06 15:10:49 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/07 13:46:11 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void	rb(t_stack *stack)
 
 void	rr(t_stack *stack, t_stack *stackb)
 {
-	rotate(stack);
-	rotate(stackb);
+	if (rotate(stack) == -1)
+		return ;
+	if (rotate(stackb) == -1)
+		return ;
 	write(1, "ra\n", 3);
 }

@@ -6,7 +6,7 @@
 #    By: bchabot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 15:01:56 by bchabot           #+#    #+#              #
-#    Updated: 2022/09/01 14:22:12 by bchabot          ###   ########.fr        #
+#    Updated: 2022/09/07 16:35:39 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,14 +32,17 @@ NAME = push_swap
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
-	
+
+%.o : %.c 
+	$(CC) $(CFLAGS) -c $< -o $@
+
 $(LIBFT) :
 	make -sC libft
-	@echo "\033[92mLibft Compiled."
+	@echo "\033[92mLibft compiled."
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(OBJS) $(CFLAGS) $(LIBFT) -o $(NAME)
-	@echo "\033[100m\033[1m\033[92mProgram Compiled."
+	$(CC) $(OBJS) $(LIBFT) -o $(NAME)
+	@echo "\033[100m\033[1m\033[92mProgram compiled and ready to exacute."
 
 clean :
 	rm -f $(OBJS)

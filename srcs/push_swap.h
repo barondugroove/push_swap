@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:16:30 by bchabot           #+#    #+#             */
-/*   Updated: 2022/09/07 13:07:21 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/07 13:44:25 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,39 @@ typedef struct s_stack {
 	int					nb_max;
 }	t_stack;
 
+// LIST UTILS 
 t_stack				*lstnew_ps(void);
 t_element			*lstnew_element(int content);
 void				lstadd_back_ps(t_stack *stack, t_element *node);
 int					lstsize_ps(t_stack *stack);
+void				fill_stack(t_stack *stack, char **tab);
+
+// MAIN UTILS 
+char				*strjoin_ps(char *s1, char *s2);
+void				free_stack(t_stack *stack);
+void				free_tab(char **tab);
+char				*get_args(char **argv);
+long int			atoi_ps(const char *nptr);
+
+// PARSING 
 int					parse_data(char **argv, t_stack *stack);
 void				get_index(t_stack *stack);
 void				reset_index(t_stack *stack);
+int					max_digits(t_stack *stack);
+int					nb_max(t_stack *stack);
+
+// ERRORS CHECK 
 int					check_params(char *argv);
 int					has_number(char *argv);
 int					is_int(char **tab);
 int					search_duplicate(t_stack *stack);
-char				*strjoin_ps(char *s1, char *s2);
 void				print_error(void);
-long int			atoi_ps(const char *nptr);
-int					max_digits(t_stack *stack);
-int					nb_max(t_stack *stack);
-void				print_stack(t_stack *stack, char name);
+
+// ALGO 
 void				sorting_big(t_stack *stack, t_stack	*stackb);
 void				sorting_three(t_stack *stack);
 void				sorting_four(t_stack *stack, t_stack *stackb);
 void				sorting_five(t_stack *stack, t_stack *stackb);
-void				free_stack(t_stack *stack);
-void				free_tab(char **tab);
-void				fill_stack(t_stack *stack, char **tab);
-char				*get_args(char **argv);
 
 // INSTRUCTIONS
 int					swap(t_stack *stack);
@@ -69,6 +77,7 @@ int					reverse(t_stack	*stack);
 void				rra(t_stack *stack);
 void				rrb(t_stack *stack);
 void				rrr(t_stack *stack, t_stack	*stackb);
+int					push(t_stack *stack_snd, t_stack *stack_rcv);
 void				pa(t_stack *stack, t_stack *stackb);
 void				pb(t_stack *stack, t_stack *stackb);
 

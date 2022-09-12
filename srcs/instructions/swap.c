@@ -6,7 +6,7 @@
 /*   By: bchabot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:19:22 by bchabot           #+#    #+#             */
-/*   Updated: 2022/08/31 17:33:59 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/09/07 13:46:38 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ void	sb(t_stack *stack)
 
 void	ss(t_stack *stack, t_stack *stackb)
 {
-	swap(stack);
-	swap(stackb);
+	if (swap(stack) == -1)
+		return ;
+	if (swap(stackb) == -1)
+		return ;
 	write(1, "ss\n", 3);
 }
