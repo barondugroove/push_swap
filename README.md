@@ -6,5 +6,5 @@
   <br>
   <img src=https://github.com/barondugroove/push_swap/blob/main/srcs/push%20swap.jpg>
   <br>
-  <h3>pousser, échanger</h3>
+  <h1>pousser, échanger</h1>
 </div>
