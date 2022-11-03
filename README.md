@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Pipex</h1>
+  <h1>push_swap</h1>
 </div>
 
 <div align="center">
